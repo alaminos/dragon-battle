@@ -13,6 +13,24 @@ class Dragon {
         console.log(`Hi my name is ${this.name}`);
     }
 
+    location = [x, y]
+
+    currentMotion = true //value goes up
+    
+    motion()
+    {//distintos patrones de movimiento se podrían definir, en este caso, el objeto se mueve en el plano X, 
+        //hacia la derecha hasta llegar al limite y luego a la izquierda
+        if (this.currentMotion) this.location[x]++;
+        else this.location[x]--;
+    }
+
+    motionChange()
+    {
+        if (this.location[x] == TATAMI_MAX || this.location[x] == TATAMI_MIN) {  
+            this.currentMotion = !this.currentMotion;
+        }
+    }
+
     attack(enemy)
     {
         //define strength of attack based on power and chance
@@ -23,8 +41,10 @@ class Dragon {
     receiveDamage()
     {
         //define damage received based on strength of attack received and defense this.defense
-        this.stamina =- 
+        this.stamina =- x;
     }
+
+
 
 }
 

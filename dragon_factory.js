@@ -2,8 +2,7 @@ const Dragon = require('./class_Dragon');
 let prompt = require('prompt');
 
 
-//all this could be part of the class_Dragon.constructor ?
-dragonProperties = {
+dragonFactory = {
     name = '',
     power = 0,
     stamina = 0,
