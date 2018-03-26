@@ -1,6 +1,6 @@
 class Dragon {
     
-    constructor(power, stamina, speed, name) 
+    constructor(power, stamina, defense, name) 
     {
         this.power = power;
         this.stamina = stamina;
@@ -15,17 +15,16 @@ class Dragon {
 
     location = [x, y]
 
-    currentMotion = true //value goes up
+    currentMotion = true //? if true, value goes up each step, if false goes down?
     
     motion()
     {//distintos patrones de movimiento se podrían definir, en este caso, el objeto se mueve en el plano X, 
-        //hacia la derecha hasta llegar al limite y luego a la izquierda
         if (this.currentMotion) this.location[x]++;
         else this.location[x]--;
     }
 
     motionChange()
-    {
+    { //changes direction when reaches board limit
         if (this.location[x] == TATAMI_MAX || this.location[x] == TATAMI_MIN) {  
             this.currentMotion = !this.currentMotion;
         }
