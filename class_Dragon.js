@@ -1,11 +1,18 @@
 class Dragon {
     
-    constructor(power, stamina, defense, name) 
+    constructor(power, stamina, defense, name, x, y) 
     {
         this.power = power;
         this.stamina = stamina;
         this.defense = defense;
         this.name = name;
+        
+        this.locus = {
+            x : x,
+            y : y,
+            xmotus : true,
+            ymotus : true,
+        }
     }
 
     sayHi() 
@@ -13,20 +20,16 @@ class Dragon {
         console.log(`Hi my name is ${this.name}`);
     }
 
-    location: ['x', 'y'],  //gotta fix this!!!
-
-    currentMotion : true, //? if true, value goes up each step, if false goes down?
-    
     motion()
     {//distintos patrones de movimiento se podrían definir, en este caso, el objeto se mueve en el plano X, 
-        if (this.currentMotion) this.location[x]++;
-        else this.location[x]--;
+        if (this.locus.motus) this.locus[x]++;
+        else this.locus[x]--;
     }
 
     motionChange()
     { //changes direction when reaches board limit
-        if (this.location[x] == TATAMI_MAX || this.location[x] == TATAMI_MIN) {  
-            this.currentMotion = !this.currentMotion;
+        if (this.locus.x == TATAMI_MAX || this.locus.x == TATAMI_MIN) {  
+            this.locus = !this.locus;
         }
     }
 
@@ -42,8 +45,6 @@ class Dragon {
         //define damage received based on strength of attack received and defense this.defense
         this.stamina =- x;
     }
-
-
 
 }
 
