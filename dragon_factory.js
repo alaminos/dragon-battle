@@ -3,10 +3,10 @@ let prompt = require('prompt');
 
 
 dragonFactory = {
-    name = '',
-    power = 0,
-    stamina = 0,
-    defense = 0,
+    name : '',
+    power : 0,
+    stamina : 0,
+    defense : 0,
 
     setName : function() {
         //ask user for a name

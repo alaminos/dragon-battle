@@ -13,9 +13,9 @@ class Dragon {
         console.log(`Hi my name is ${this.name}`);
     }
 
-    location = [x, y]
+    location: ['x', 'y'],  //gotta fix this!!!
 
-    currentMotion = true //? if true, value goes up each step, if false goes down?
+    currentMotion : true, //? if true, value goes up each step, if false goes down?
     
     motion()
     {//distintos patrones de movimiento se podrían definir, en este caso, el objeto se mueve en el plano X, 
