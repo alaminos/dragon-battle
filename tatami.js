@@ -1,19 +1,16 @@
 
-function boardConstructor(x,y) {
+boardConstructor = function(size) {
     let board = [];
-    for (var xi = 0; xi < x; xi++) {
+    for (var x = 0; x < size; x++) {
         board.push([]);
-        for (var yi = 0; yi < y; yi++) {
-            board[xi].push([]);
+        for (var y = 0; y < size; y++) {
+            board[x].push([]);
         }
     }
     return board;
 }
 
-
-const board = boardConstructor(4,4);
-
-/*-----testing----*/
+/*-----testing object----*/
 myobj = {
     name : 'Pep',
     position : {
@@ -28,8 +25,8 @@ myobj = {
 myobj.onBoard();
 /*---------------*/
 
- //prints board showing marked squares when occupied
-let printBoard = (function() {
+ //prints board showing marked squares when they are occupied by a dragon
+let printBoardinConsole = (function() {
     let objectsFound = [];
     for (var x = 0; x < board.length; x++) {
         let line = '';
@@ -49,4 +46,4 @@ let printBoard = (function() {
 
 
 
-
+module.exports = boardConstructor;

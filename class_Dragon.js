@@ -10,8 +10,11 @@ class Dragon {
         this.locus = {
             x : x,
             y : y,
-            xmotus : true,
-            ymotus : true,
+        }
+
+        this.motus = {
+            xmotus : null,
+            ymotus : null,
         }
     }
 
@@ -20,10 +23,17 @@ class Dragon {
         console.log(`Hi my name is ${this.name}`);
     }
 
-    motion()
-    {//distintos patrones de movimiento se podrían definir, en este caso, el objeto se mueve en el plano X, 
-        if (this.locus.motus) this.locus[x]++;
-        else this.locus[x]--;
+    setMotion()
+    {
+        step = [0, 1, -1];//pasos posibles:
+        xmotus = step[1]; //mueve a casilla de valor superior, en la misma columna  
+        ymotus = step[2] //mueve a columna de valor inferior
+    }
+
+    setNewPostion()
+    { 
+        this.locus.x += this.xmotus;
+        this.locus.y += this.ymotus;
     }
 
     motionChange()

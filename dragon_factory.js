@@ -29,3 +29,6 @@ dragonFactory = {
         return new Dragon(name, power, stamina, defense);
     }
 }
+
+
+module.exports = dragonFactory;
