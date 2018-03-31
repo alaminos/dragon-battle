@@ -56,9 +56,9 @@ class Dragon {
         this.stamina =- x;
     }
 
-    onBoard(x,y)
+    onBoard(board)
     {
-        board[x][y] = this.name;
+        board[this.locus.x][this.locus.y] = this.name;
     }
 
 }

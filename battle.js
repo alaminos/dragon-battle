@@ -9,13 +9,9 @@ Object.entries(mydragons).forEach(([i]) => {
 });*/
 
 /*
-el usuario elige el tamaño del tablero
-
-they will all move a step;
-after each step, it is checked if 2 dragons are in the same square;
-if they are, the dragon that has stepped into, will start attacking.*/
-
-/* -EXAMPLE---------  DATA INPUT BY USER: */
+user chooses size of board
+user creates dragon via form
+ -EXAMPLE---------  DATA INPUT BY USER: */
 let boardSize = 5
 ,   dragonName = 'Pomoko'
 ,   power = 5
@@ -26,9 +22,20 @@ let boardSize = 5
 
 //builds a board and print it into console
 const board = boardConstructor(boardSize);
-console.log(board);
+
 
 //builds a dragon and print it into console
 const dragon = dragonFactory.construct(dragonName, power, stamina, defense);
 
-console.log(dragon);
+dragon.onBoard(board); //place dragon on board
+
+console.log(dragon); //monitoring that dragon has been correctly created
+
+printBoard(board); //should print board in console, marking square where dragon is placed
+
+/*
+all dragons will move a step every period of time T;
+steps can be a motion in the x axis, the y axis or both
+steps must take into account the extension of the board, that is the dragon cannot end up outside of the board
+after each step, it is checked if 2 dragons are in the same square;
+if they are, the dragon that has stepped into, will start attacking.*/
