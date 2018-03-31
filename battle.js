@@ -8,10 +8,6 @@ Object.entries(mydragons).forEach(([i]) => {
     return mydragons[i].sayHi();
 });*/
 
-//  mydragons.Jujulat.attack(mydragons.Gonfq);
-
-
-
 /*
 el usuario elige el tamaño del tablero
 
@@ -19,5 +15,20 @@ they will all move a step;
 after each step, it is checked if 2 dragons are in the same square;
 if they are, the dragon that has stepped into, will start attacking.*/
 
-let sizeChosenByUser = 5
-const board = boardConstructor(sizeChosenByUser);
+/* -EXAMPLE---------  DATA INPUT BY USER: */
+let boardSize = 5
+,   dragonName = 'Pomoko'
+,   power = 5
+,   stamina = 5
+,   defense = 5;
+//---------------
+
+
+//builds a board and print it into console
+const board = boardConstructor(boardSize);
+console.log(board);
+
+//builds a dragon and print it into console
+const dragon = dragonFactory.construct(dragonName, power, stamina, defense);
+
+console.log(dragon);

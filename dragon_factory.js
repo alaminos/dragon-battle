@@ -1,6 +1,4 @@
 const Dragon = require('./class_Dragon');
-let prompt = require('prompt');
-
 
 dragonFactory = {
     name : '',
@@ -30,5 +28,9 @@ dragonFactory = {
     }
 }
 
+/*---testing----
+let dragon = dragonFactory.construct('Momo', 3,5,6,0,0);
+console.log(dragon);
+-----*/
 
 module.exports = dragonFactory;

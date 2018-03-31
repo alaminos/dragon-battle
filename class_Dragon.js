@@ -1,6 +1,6 @@
 class Dragon {
     
-    constructor(power, stamina, defense, name, x, y) 
+    constructor(name, power, stamina, defense) 
     {
         this.power = power;
         this.stamina = stamina;
@@ -8,13 +8,13 @@ class Dragon {
         this.name = name;
         
         this.locus = {
-            x : x,
-            y : y,
+            x : 0,
+            y : 0,
         }
 
         this.motus = {
-            xmotus : null,
-            ymotus : null,
+            xmotus : 0,
+            ymotus : 0,
         }
     }
 
