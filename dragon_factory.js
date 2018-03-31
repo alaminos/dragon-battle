@@ -23,8 +23,8 @@ dragonFactory = {
         //12 - (range between power and stamina)
     },
 
-    construct : function(name, power, stamina, defense) {
-        return new Dragon(name, power, stamina, defense);
+    construct : function(name, power, stamina, defense, board) {
+        return new Dragon(name, power, stamina, defense, board);
     }
 }
 

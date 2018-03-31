@@ -8,6 +8,9 @@ Object.entries(mydragons).forEach(([i]) => {
     return mydragons[i].sayHi();
 });*/
 
+//builds a board and print it into console
+
+
 /*
 user chooses size of board
 user creates dragon via form
@@ -17,21 +20,29 @@ let boardSize = 5
 ,   power = 5
 ,   stamina = 5
 ,   defense = 5;
+const BOARD = boardConstructor(boardSize);
 //---------------
 
 
-//builds a board and print it into console
-const board = boardConstructor(boardSize);
-
-
 //builds a dragon and print it into console
-const dragon = dragonFactory.construct(dragonName, power, stamina, defense);
-
-dragon.onBoard(board); //place dragon on board
+const dragon = dragonFactory.construct(dragonName, power, stamina, defense, BOARD);
 
 console.log(dragon); //monitoring that dragon has been correctly created
 
-printBoard(board); //should print board in console, marking square where dragon is placed
+console.log('Now dragon.onBoard(): ');
+dragon.onBoard(); //place dragon on board
+
+console.log('Now printBoard(BOARD): ');
+printBoard(BOARD); //should print board in console, marking square where dragon is placed
+
+dragon.sayHi();
+
+console.log('now dragon moves');
+dragon.move(1,1);
+
+
+console.log('print board again after dragon has moved');
+printBoard(BOARD);
 
 /*
 all dragons will move a step every period of time T;
