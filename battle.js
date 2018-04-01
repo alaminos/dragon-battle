@@ -30,7 +30,7 @@ const dragon = dragonFactory.construct(dragonName, power, stamina, defense, BOAR
 console.log(dragon); //monitoring that dragon has been correctly created
 
 console.log('Now dragon.onBoard(): ');
-dragon.onBoard(); //place dragon on board
+dragon.onBoard(BOARD); //place dragon on board
 
 console.log('Now printBoard(BOARD): ');
 printBoard(BOARD); //should print board in console, marking square where dragon is placed

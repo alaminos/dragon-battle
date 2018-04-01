@@ -1,6 +1,6 @@
 class Dragon {
     
-    constructor(name, power, stamina, defense, board) 
+    constructor(name, power, stamina, defense) 
     {
         this.power = power;
         this.stamina = stamina;
@@ -12,7 +12,6 @@ class Dragon {
             y : 0
         }
 
-        this.board = board;
     }
 
     sayHi() 
@@ -26,8 +25,6 @@ class Dragon {
 
         this.locus.x += motus[x];
         this.locus.y += motus[y];
-
-        this.onBoard();
     }
 
 
@@ -52,12 +49,12 @@ class Dragon {
         this.stamina =- x;
     }
 
-    onBoard()
+    onBoard(board)
     {
-        this.board[this.locus.x][this.locus.y] = this.name;
+        board[this.locus.x][this.locus.y] = this.name;
         /*this function signals to the board the new position of the dragon
         a method of the board should make sure that previous position is erased
-        Could also be in charge of signaling back to the dragon, that board limit has been reached.*/
+        Could also be in charge of signaling back to the dragon that the board limit has been reached.*/
     }
 }
 
