@@ -3,28 +3,29 @@ class Board {
     {
         this.size = size;
 
-        let board = [];
+        this.dragons = [];
+
+        this.board = [];
         for (var x = 0; x < size; x++) {
-            board.push([]);
+            this.board.push([]);
             for (var y = 0; y < size; y++) {
-                board[x].push([]);
+                this.board[x].push([]);
             }
         }
-        return board;
     }
 
     drawBoard()
     {
         let objectsFound = [];
-        for (var x = 0; x < board.length; x++) {
+        for (var x = 0; x < this.board.length; x++) {
             let line = '';
-            for (var y = 0; y < board[x].length; y++) {
-                if (board[x][y].length === 0) {
+            for (var y = 0; y < this.board[x].length; y++) {
+                if (this.board[x][y].length === 0) {
                     line += ' . ';
                 }
                 else {
                     line += ' x ';
-                    objectsFound.push(board[x][y]);
+                    objectsFound.push(this.board[x][y]);
                 }
             }
             console.log(line);
@@ -32,12 +33,19 @@ class Board {
         console.log(objectsFound);
     }
 
-
-    aDragonHasMoved(dragon)
+    addNewDragon(dragon)
     {
-        //erase previous dragon 
+        this.dragons.push(dragon);
+    }
+
+
+    aDragonHasMoved(dragon, x, y)
+    {
+        //get previous coordenates,
+        //update dragon location on board
 
     }
 }
 
 
+module.exports = Board;

@@ -57,7 +57,7 @@ class Dragon {
         and the board, will update the map after every new position input.
         */
 
-        board.aDragonHasMoved();
+        board.aDragonHasMoved(this, this.locus.x, this.locus.y);
         /*this function signals to the board the new position of the dragon
         a method of the board should make sure that previous position is erased
         Could also be in charge of signaling back to the dragon that the board limit has been reached.*/

@@ -1,15 +1,9 @@
 const Dragon = require('./class_Dragon');
 //const mydragons = require('./mydragons');
 const DRAGON_FACTORY = require('./dragon_factory');
-const TATAMI = require('./tatami');
-
-/*this should be a static method within Dragon class
-Object.entries(mydragons).forEach(([i]) => {
-    return mydragons[i].sayHi();
-});*/
+const BOARD = require('./class_Board');
 
 //builds a board and print it into console
-
 
 /*
 user chooses size of board
@@ -20,7 +14,7 @@ let boardSize = 5
 ,   power = 5
 ,   stamina = 5
 ,   defense = 5;
-const BOARD = boardConstructor(boardSize);
+const myBoard = new BOARD(boardSize);
 //---------------
 
 
@@ -29,12 +23,6 @@ const dragon = dragonFactory.construct(dragonName, power, stamina, defense, BOAR
 
 console.log(dragon); //monitoring that dragon has been correctly created
 
-console.log('Now dragon.onBoard(): ');
-dragon.onBoard(BOARD); //place dragon on board
-
-console.log('Now printBoard(BOARD): ');
-printBoard(BOARD); //should print board in console, marking square where dragon is placed
-
 dragon.sayHi();
 
 console.log('now dragon moves');
@@ -42,7 +30,7 @@ dragon.move(1,1);
 
 
 console.log('print board again after dragon has moved');
-printBoard(BOARD);
+myBoard.drawBoard();
 
 /*
 all dragons will move a step every period of time T;
