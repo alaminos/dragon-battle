@@ -3,7 +3,11 @@ class Board {
     {
         this.size = size;
 
-        this.dragons = [];
+        this.dragons = []; // here all the participants are collected, 
+        //can we have variables that point to objects, and so we can get access to updated object properties, via this variable?
+
+        //but why having a dragons array and a board array where you are going to place the dragons anyway?
+        // you can have dragon objects in the board array
 
         this.board = [];
         for (var x = 0; x < size; x++) {
@@ -41,8 +45,10 @@ class Board {
 
     aDragonHasMoved(dragon, x, y)
     {
-        //get previous coordenates,
+        //get previous coordenates, and remove dragon from there
+        this.board[old_x][old_y] = ''; //??
         //update dragon location on board
+        this.board[x][y].push(dragon.name); //this inserts dragon
 
     }
 }

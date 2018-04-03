@@ -25,6 +25,7 @@ class Dragon {
 
         this.locus.x += motus[x];
         this.locus.y += motus[y];
+
     }
 
 

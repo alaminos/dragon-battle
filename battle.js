@@ -19,18 +19,23 @@ const myBoard = new BOARD(boardSize);
 
 
 //builds a dragon and print it into console
-const dragon = dragonFactory.construct(dragonName, power, stamina, defense, BOARD);
+const myDragon = dragonFactory.construct(dragonName, power, stamina, defense, BOARD);
 
-console.log(dragon); //monitoring that dragon has been correctly created
+myBoard.addNewDragon(myDragon);
 
-dragon.sayHi();
+console.log(myDragon); //monitoring that dragon has been correctly created
 
+myDragon.sayHi();
+
+console.log('Dragon has been added to board.dragons, so it should appear here: ');
+console.log(myBoard.dragons)
 console.log('now dragon moves');
-dragon.move(1,1);
+myDragon.move(1,1);
 
 
-console.log('print board again after dragon has moved');
-myBoard.drawBoard();
+myBoard.dragons[0].locus.x = myDragon.locus.x;
+console.log('This is the content of dragons property of Board: ');
+console.log(myBoard.dragons);
 
 /*
 all dragons will move a step every period of time T;
