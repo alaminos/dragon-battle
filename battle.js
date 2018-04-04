@@ -21,21 +21,28 @@ const myBoard = new BOARD(boardSize);
 
 //builds a dragon and print it into console
 const myDragon = dragonFactory.construct(dragonName, power, stamina, defense, BOARD);
-console.log(myDragon); //monitoring that dragon has been correctly created
+console.log(myDragon);
 myDragon.sayHi();
 
-//put dragon into board
-myBoard.addNewDragon(myDragon, 0, 3);
+//puts dragon into board
+myBoard.addNewDragon(myDragon, myDragon.locus.x, myDragon.locus.y);
 
 console.log('Dragon has been added to board.dragons, so it should appear here: ');
-console.log(myBoard.dragons);
+console.log(myBoard.board);
+
+
 console.log('Now dragon moves');
+//before it moves, we save its old coordenates
+let oldX = myDragon.locus.x;
+let oldY = myDragon.locus.y;
+//now we can move it
 myDragon.move(1,1);
 
-//after dragon has changed its locus values, these must reflect on its board position
-myBoard.dragons[0].locus.x = myDragon.locus.x;
+/*after dragon has changed its locus values (let's say it has expressed its will to move), 
+these must reflect in actual movement on the board*/
+myBoard.aDragonHasMoved(myDragon, oldX, oldY, myDragon.locus.x, myDragon.locus.y);
 console.log('Now that the dragon has moved, printing the board again should show dragon in its updated location');
-console.log(myBoard.dragons);
+console.log(myBoard.drawBoard());
 
 /*
 all dragons will move a step every period of time P;

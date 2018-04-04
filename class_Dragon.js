@@ -19,10 +19,12 @@ class Dragon {
 
     move(x,y) //temporarily I will pass the parameter when calling this fuction. In future version, the value will be chosen by the function
     {
-        let motus = [0, 1, -1]; //these digits represent 3 different choices: go forward (1), backwards (-1), or not moving (0)
+        let motus = [0, 1, -1]; 
+        /*these digits represent 3 different choices: go forward (1), backwards (-1), or not moving (0).
+        Here an algorithm should pick one value from these.*/
 
-        this.locus.x += motus[x];
-        this.locus.y += motus[y];
+        this.locus.x += x;
+        this.locus.y += y;
 
     }
 
@@ -56,7 +58,7 @@ class Dragon {
         and the board, will update the map after every new position input.
         */
 
-        board.aDragonHasMoved(this, this.locus.x, this.locus.y);
+        board.aDragonHasMoved(this, old_x, old_y, this.locus.x, this.locus.y);
         /*this function signals to the board the new position of the dragon
         a method of the board should make sure that previous position is erased
         Could also be in charge of signaling back to the dragon that the board limit has been reached.*/
