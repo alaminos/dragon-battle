@@ -6,12 +6,10 @@ class Dragon {
         this.stamina = stamina;
         this.defense = defense;
         this.name = name;
-        
         this.locus = {
             x : 0, //the max value of these coordenates will depend on the size of the board
             y : 0
         }
-
     }
 
     sayHi() 

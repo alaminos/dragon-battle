@@ -20,7 +20,7 @@ class Board {
 
     drawBoard()
     {
-        let objectsFound = [];
+        //let objectsFound = [];
         for (var x = 0; x < this.board.length; x++) {
             let line = '';
             for (var y = 0; y < this.board[x].length; y++) {
@@ -29,21 +29,21 @@ class Board {
                 }
                 else {
                     line += ' x ';
-                    objectsFound.push(this.board[x][y]);
+                    //objectsFound.push(this.board[x][y]);
                 }
             }
             console.log(line);
         }
-        console.log(objectsFound);
+        //console.log(objectsFound);
     }
 
-    addNewDragon(dragon)
+    addNewDragon(dragon, row, column)
     {
-        this.dragons.push(dragon);
+        this.dragons[row][column].push(dragon);
     }
 
 
-    aDragonHasMoved(dragon, x, y)
+    aDragonHasMoved(dragon, row, column)
     {
         //get previous coordenates, and remove dragon from there
         this.board[old_x][old_y] = ''; //??
