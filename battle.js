@@ -10,17 +10,23 @@ user chooses size of board
 user creates dragon via form
  -EXAMPLE---------  DATA INPUT BY USER: */
 let boardSize = 5
-,   dragonName = 'Pomoko'
+,   name = 'Pomoko'
 ,   power = 5
 ,   stamina = 5
-,   defense = 5;
-//---------------
+,   defense = 5
+//---And a second dragon:
+,   name2 = 'Yungal'
+,   power2 = 4
+,   stamina2 = 6
+,   defense2 = 5;
+
+
 
 //builds a board
 const myBoard = new BOARD(boardSize);
 
 //builds a dragon and print it into console
-const myDragon = dragonFactory.construct(dragonName, power, stamina, defense, BOARD);
+const myDragon = dragonFactory.construct(name, power, stamina, defense, BOARD);
 console.log(myDragon);
 myDragon.sayHi();
 
