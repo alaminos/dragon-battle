@@ -45,12 +45,11 @@ console.log('Now dragons move');
 let oldX = myDragon.locus.x;
 let oldY = myDragon.locus.y; //these two vars should be declared within a function that 
 //now we can move it
-myDragon.move(1,1);
+myDragon.move(myBoard, 1,1);
 /*maybe a closure function can take the old coordenates 
 and do the thing aDragonHasMoved does, and then once it has new coords, it calls a function within?*/
 
 
-myBoard.aDragonHasMoved(myDragon, oldX, oldY, myDragon.locus.x, myDragon.locus.y);
 console.log('Now that the dragon has moved, printing the board again should show dragon in its updated location');
 console.log(myBoard.drawBoard());
 

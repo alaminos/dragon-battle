@@ -1,7 +1,7 @@
 class Board {
     constructor(size)
     {
-        this.size = size;
+        this.size = size; //this property may be useful for keeping dragon moves within limits
 
         this.board = [];
         for (var x = 0; x < size; x++) {
