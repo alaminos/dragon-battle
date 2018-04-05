@@ -20,32 +20,36 @@ let boardSize = 5
 ,   stamina2 = 6
 ,   defense2 = 5;
 
-
-
-//builds a board
+//build a board
 const myBoard = new BOARD(boardSize);
 
-//builds a dragon and print it into console
+//construct dragons
 const myDragon = dragonFactory.construct(name, power, stamina, defense, BOARD);
 console.log(myDragon);
 myDragon.sayHi();
 
-//puts dragon into board
-myBoard.addNewDragon(myDragon, myDragon.locus.x, myDragon.locus.y);
+const dragon2 = dragonFactory.construct(name2, power2, stamina2, defense2, BOARD);
+console.log(dragon2);
+dragon2.sayHi();
 
-console.log('Dragon has been added to board.dragons, so it should appear here: ');
+//put dragons into board
+myBoard.addNewDragon(myDragon, myDragon.locus.x, myDragon.locus.y);
+myBoard.addNewDragon(dragon2, dragon2.locus.x, dragon2.locus.y);
+// initial location of dragon can be chosen by a board static method? or within dragon constructor function?
+console.log('Dragons has been added to board.dragons, so it should appear here: ');
 console.log(myBoard.board);
 
 
-console.log('Now dragon moves');
+console.log('Now dragons move');
 //before it moves, we save its old coordenates
 let oldX = myDragon.locus.x;
-let oldY = myDragon.locus.y;
+let oldY = myDragon.locus.y; //these two vars should be declared within a function that 
 //now we can move it
 myDragon.move(1,1);
+/*maybe a closure function can take the old coordenates 
+and do the thing aDragonHasMoved does, and then once it has new coords, it calls a function within?*/
 
-/*after dragon has changed its locus values (let's say it has expressed its will to move), 
-these must reflect in actual movement on the board*/
+
 myBoard.aDragonHasMoved(myDragon, oldX, oldY, myDragon.locus.x, myDragon.locus.y);
 console.log('Now that the dragon has moved, printing the board again should show dragon in its updated location');
 console.log(myBoard.drawBoard());
