@@ -12,23 +12,19 @@ user creates dragon via form
 let boardSize = 5
 ,   name = 'Pomoko'
 ,   power = 5
-,   stamina = 5
-,   defense = 5
 //---And a second dragon:
 ,   name2 = 'Yungal'
-,   power2 = 4
-,   stamina2 = 6
-,   defense2 = 5;
+,   power2 = 4;
 
 //build a board
 const myBoard = new BOARD(boardSize);
 
 //construct dragons
-const myDragon = dragonFactory.construct(name, power, stamina, defense, BOARD);
+const myDragon = dragonFactory.construct(name, power);
 console.log(myDragon);
 myDragon.sayHi();
 
-const dragon2 = dragonFactory.construct(name2, power2, stamina2, defense2, BOARD);
+const dragon2 = dragonFactory.construct(name2, power2);
 console.log(dragon2);
 dragon2.sayHi();
 

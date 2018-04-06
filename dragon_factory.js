@@ -15,7 +15,7 @@ dragonFactory = {
         this.power = power;
     },
 
-    setStamina : function(pow) {
+    setStamina : function(power) {
         //the more power the less stamina
         this.stamina = 16 - power;
     },
