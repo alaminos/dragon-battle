@@ -6,6 +6,7 @@ class Dragon {
         this.stamina = stamina;
         this.defense = defense;
         this.name = name;
+        this.boardSize;
         this.locus = {
             x : 0, //the max value of these coordenates will depend on the size of the board
             y : 0
@@ -32,14 +33,11 @@ class Dragon {
         this.locus.y += y;
 
         board.aDragonHasMoved(this, oldX, oldY, this.locus.x, this.locus.y);
-
     }
-
-
 
     motionChange()
     { //changes direction when reaches board limit
-        if (this.locus.x == TATAMI_MAX || this.locus.x == TATAMI_MIN) {  
+        if (this.locus.x == TATAMI_MAX || this.locus.x == 0) {  
             this.locus = !this.locus;
         }
     }

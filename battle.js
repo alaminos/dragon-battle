@@ -36,7 +36,7 @@ dragon2.sayHi();
 myBoard.addNewDragon(myDragon, myDragon.locus.x, myDragon.locus.y);
 myBoard.addNewDragon(dragon2, dragon2.locus.x, dragon2.locus.y);
 // initial location of dragon can be chosen by a board static method? or within dragon constructor function?
-console.log('Dragons has been added to board.dragons, so it should appear here: ');
+console.log('Dragons has been added to board, so it should appear here: ');
 console.log(myBoard.board);
 
 

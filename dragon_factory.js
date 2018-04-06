@@ -1,30 +1,37 @@
 const Dragon = require('./class_Dragon');
 
 dragonFactory = {
-    name : '',
-    power : 0,
+    name : '', //can be deleted
+    power : 0, //can be deleted
     stamina : 0,
     defense : 0,
 
-    setName : function() {
-        //ask user for a name
-        this.name = prompt.get('name');
+    setName : function(name) { //can be deleted
+        this.name = name;
     },
 
-    setPower : function() {
+    setPower : function(power) { //can be deleted
         //value from 1 to 9
+        this.power = power;
     },
 
-    setStamina : function() {
-        //max of 12 and min of 12 - this.power
+    setStamina : function(pow) {
+        //the more power the less stamina
+        this.stamina = 16 - power;
     },
 
     setDefense : function() {
-        //12 - (range between power and stamina)
+        //big difference between power & stamina will result in low defense, and vice versa
+        let equilibrium = Math.abs(this.power - this.stamina);
+        this.defense = 8 - equilibrium;
+
     },
 
-    construct : function(name, power, stamina, defense, board) {
-        return new Dragon(name, power, stamina, defense, board);
+    construct : function(name, power) {
+        this.setStamina(power);
+        this.setDefense();
+
+        return new Dragon(name, power, this.power, this.defense);
     }
 }
 
