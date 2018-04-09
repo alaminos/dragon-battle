@@ -15,11 +15,11 @@ dragonFactory = {
         this.defense = 8 - difference;
     },
 
-    construct : function(name, power) {
+    construct : function(name, power, boardSize) {
         this.setStamina(power);
         this.setDefense();
 
-        return new Dragon(name, power, this.power, this.defense);
+        return new Dragon(name, power, this.power, this.defense, boardSize);
     }
 }
 

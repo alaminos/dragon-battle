@@ -20,11 +20,11 @@ let boardSize = 5
 const myBoard = new BOARD(boardSize);
 
 //construct dragons
-const myDragon = dragonFactory.construct(name, power);
+const myDragon = dragonFactory.construct(name, power, boardSize);
 console.log(myDragon);
 myDragon.sayHi();
 
-const dragon2 = dragonFactory.construct(name2, power2);
+const dragon2 = dragonFactory.construct(name2, power2, boardSize);
 console.log(dragon2);
 dragon2.sayHi();
 
@@ -38,16 +38,15 @@ console.log(myBoard.board);
 
 console.log('Now dragons move');
 //before it moves, we save its old coordenates
-let oldX = myDragon.locus.x;
-let oldY = myDragon.locus.y; //these two vars should be declared within a function that 
+
 //now we can move it
-myDragon.move(myBoard, 1,1);
-/*maybe a closure function can take the old coordenates 
-and do the thing aDragonHasMoved does, and then once it has new coords, it calls a function within?*/
+setInterval(function() { 
+    myDragon.move(myBoard);
+    dragon2.move(myBoard);
+    console.log(myBoard.drawBoard()); }, 3000);
 
 
-console.log('Now that the dragon has moved, printing the board again should show dragon in its updated location');
-console.log(myBoard.drawBoard());
+
 
 /*
 all dragons will move a step every period of time P;
