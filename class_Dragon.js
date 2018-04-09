@@ -18,32 +18,36 @@ class Dragon {
         console.log(`Hi my name is ${this.name}`);
     }
 
-    move(board, x,y) //temporarily I will pass the parameter when calling this fuction. In future version, the value will be chosen by the function
-    {   
-        let motus = [0, 1, -1]; 
-        /*these digits represent 3 different choices: go forward (1), backwards (-1), or not moving (0).
-        Let's randomly pick one value.*/
-
-        let randomX = motus[Math.floor(Math.random() * motus.length)];
-        let randomY = motus[Math.floor(Math.random() * motus.length)];    
-
+    move(board)
+    {     
         //current coordenates are saved before changing them
         let oldX = this.locus.x;
         let oldY = this.locus.y;
 
         //coordenates are changed
-        this.locus.x += randomX;
-        this.locus.y += randomY;
-
+        this.locus.x = this.randomValue(this.locus.x);
+        this.locus.y = this.randomValue(this.locus.y);
+        
+        //pass new coordenates to board method
         board.aDragonHasMoved(this, oldX, oldY, this.locus.x, this.locus.y);
     }
 
-    motionChange()
-    { //changes direction when reaches board limit
-        if (this.locus.x == TATAMI_MAX || this.locus.x == 0) {  
-            this.locus = !this.locus;
-        }
+    randomValue(locusValue)
+    {
+        //Before choosing random value, we will establish min a max possible value
+
+        let min = -1; //means: going down a column, or going left in a row
+        let max = 1; //means: column upwards, or going right in a row
+
+        if (locusValue == 0) { //if coordenate is 0, it cannot go down/left
+            min = 0; //so in this case, minimum value for the randomly generated change is 0
+        } else if (locusValue == boardSize) {   //And if it cannot go up/right
+            max = 0;}
+
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
+
+
 
     attack(enemy)
     {
