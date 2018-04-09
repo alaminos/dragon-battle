@@ -22,15 +22,18 @@ class Dragon {
     {   
         let motus = [0, 1, -1]; 
         /*these digits represent 3 different choices: go forward (1), backwards (-1), or not moving (0).
-        Here an algorithm should pick one value from these.*/
+        Let's randomly pick one value.*/
+
+        let randomX = motus[Math.floor(Math.random() * motus.length)];
+        let randomY = motus[Math.floor(Math.random() * motus.length)];    
 
         //current coordenates are saved before changing them
         let oldX = this.locus.x;
         let oldY = this.locus.y;
 
         //coordenates are changed
-        this.locus.x += x;
-        this.locus.y += y;
+        this.locus.x += randomX;
+        this.locus.y += randomY;
 
         board.aDragonHasMoved(this, oldX, oldY, this.locus.x, this.locus.y);
     }
