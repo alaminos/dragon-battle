@@ -8,8 +8,8 @@ class Dragon {
         this.name = name;
         this.boardSize = boardSize;
         this.locus = {
-            x : 0, //the max value of these coordenates will depend on the size of the board
-            y : 0
+            x : undefined, //type: number. The max value of these coordenates will depend on the size of the board
+            y : undefined
         }
     }
 
@@ -35,15 +35,16 @@ class Dragon {
     randomValue(locusValue)
     {
         //Before choosing random value, we will establish min a max possible value
-        
+
         let min = -1; //means: going down a column, or going left in a row
         let max = 1; //means: column upwards, or going right in a row
 
-        if (locusValue == 0) { //if coordenate is 0, it cannot go down/left
+        if (locusValue === 0) { //if coordenate is 0, it cannot go down/left
             min = 0; //so in this case, minimum value for the randomly generated change is 0
-        } else if (locusValue == this.boardSize-1) {   //And if it cannot go up/right
+        } else if (locusValue === this.boardSize-1) {   //And if it cannot go up/right
             //note that if boardSize is 4, indexes of array go from 0 to 3, so higher index is boardSize -1.
-            max = 0;}
+            max = 0;
+        } else { console.log('No min or max was changed.');}
         
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }

@@ -31,9 +31,12 @@ class Board {
         //console.log(objectsFound);
     }
 
-    addNewDragon(dragon, row, column)
-    {
-        this.board[row][column].push(dragon);
+    addNewDragon(dragon)
+    {   
+        let row = dragon.locus.x = dragon.randomValue(dragon.locus.x);
+        let col = dragon.locux.y = dragon.randomValue(dragon.locus.y);
+        //needs to check if slot is empty, before inserting dragon
+        this.board[row][col].push(dragon);
     }
 
 

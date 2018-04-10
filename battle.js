@@ -29,8 +29,8 @@ console.log(dragon2);
 dragon2.sayHi();
 
 //put dragons into board
-myBoard.addNewDragon(myDragon, myDragon.locus.x, myDragon.locus.y);
-myBoard.addNewDragon(dragon2, dragon2.locus.x, dragon2.locus.y);
+myBoard.addNewDragon(myDragon);
+myBoard.addNewDragon(dragon2);
 // initial location of dragon can be chosen by a board static method? or within dragon constructor function?
 console.log('Dragons has been added to board, so it should appear here: ');
 console.log(myBoard.board);
@@ -46,11 +46,14 @@ setInterval(function() {
     console.log(myBoard.drawBoard()); }, 3000);
 
 
+    /*Next changes:
+each square can accommodate one and only one dragon
+when dragons are introduced into the board, location is either picked randomly
+or chosen.
+board.addNewDragon will check if square is occupied
 
 
 /*
-all dragons will move a step every period of time P;
-steps can be a motion in the x axis, the y axis or both
 steps must take into account the extension of the board, that is the dragon cannot end up outside of the board
-after each step, it is checked if 2 dragons are in the same square;
-if they are, the dragon that has stepped into, will start attacking.*/
+after each step, adjecent squares in the horizontal and vertical planes are checked for dragons to fight
+if a dragon is found, the finder starts the fight*/
