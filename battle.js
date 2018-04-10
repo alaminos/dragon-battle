@@ -21,11 +21,11 @@ const myBoard = new BOARD(boardSize);
 
 //construct dragons
 const myDragon = dragonFactory.construct(name, power, boardSize);
-console.log(myDragon);
+console.log(myDragon); //errors: stamina undefined, defense NaN
 myDragon.sayHi();
 
 const dragon2 = dragonFactory.construct(name2, power2, boardSize);
-console.log(dragon2);
+console.log(dragon2);//errors: stamina undefined, defense NaN
 dragon2.sayHi();
 
 //put dragons into board

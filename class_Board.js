@@ -33,10 +33,15 @@ class Board {
 
     addNewDragon(dragon)
     {   
-        let row = dragon.locus.x = dragon.randomValue(dragon.locus.x);
-        let col = dragon.locux.y = dragon.randomValue(dragon.locus.y);
+        let row = dragon.locus.x = this.randomPlace();
+        let col = dragon.locus.y = this.randomPlace();
         //needs to check if slot is empty, before inserting dragon
         this.board[row][col].push(dragon);
+    }
+
+    randomPlace()
+    {
+        return Math.floor(Math.random() * this.size);
     }
 
 
