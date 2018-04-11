@@ -25,8 +25,8 @@ class Dragon {
         let oldY = this.locus.y;
 
         //coordenates are changed
-        this.locus.x = this.randomValue(this.locus.x);
-        this.locus.y = this.randomValue(this.locus.y);
+        this.locus.x += this.randomValue(this.locus.x);
+        this.locus.y += this.randomValue(this.locus.y);
         console.log('Moving ' + this.name + ' to row : ' + this.locus.x + ' and to column : ' + this.locus.y);
         //pass new coordenates to board method
         board.aDragonHasMoved(this, oldX, oldY, this.locus.x, this.locus.y);
@@ -34,22 +34,21 @@ class Dragon {
 
     randomValue(locusValue)
     {
-        //Before choosing random value, we will establish min a max possible value
+        //Possible values generated: -1, 0, and +1
+        //Before choosing random value, we will establish min and max possible values
 
         let min = -1; //means: going down a column, or going left in a row
         let max = 1; //means: column upwards, or going right in a row
 
-        if (locusValue === 0) { //if coordenate is 0, it cannot go down/left
+        if (locusValue === 0) { //if coordenate is 0 (means it is located in board-array index at index 0) it cannot go any lower
             min = 0; //so in this case, minimum value for the randomly generated change is 0
-        } else if (locusValue === this.boardSize-1) {   //And if it cannot go up/right
-            //note that if boardSize is 4, indexes of array go from 0 to 3, so higher index is boardSize -1.
+        } else if (locusValue === this.boardSize-1) {   
+            //note that if boardSize is 4, indexes of array go from 0 to 3, so higher index is boardSize-1.
             max = 0;
         } else { console.log('No min or max was changed.');}
         
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-
-
 
     attack(enemy)
     {

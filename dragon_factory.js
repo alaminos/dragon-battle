@@ -9,17 +9,17 @@ dragonFactory = {
         this.stamina = 16 - power;
     },
 
-    setDefense : function() {
+    setDefense : function(power) {
         //big difference between power & stamina will result in low defense, and vice versa
-        let difference = Math.abs(this.power - this.stamina); //difference between power and stamina, absolute value (no negative numbers)
+        let difference = Math.abs(power - this.stamina); //difference between power and stamina, absolute value (no negative numbers)
         this.defense = 8 - difference;
     },
 
     construct : function(name, power, boardSize) {
         this.setStamina(power);
-        this.setDefense();
+        this.setDefense(power);
 
-        return new Dragon(name, power, this.power, this.defense, boardSize);
+        return new Dragon(name, power, this.stamina, this.defense, boardSize);
     }
 }
 
