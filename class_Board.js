@@ -35,7 +35,7 @@ class Board {
     {   
         let row = dragon.locus.x = this.randomPlace();
         let col = dragon.locus.y = this.randomPlace();
-        //needs to check if slot is empty, before inserting dragon
+        //improvement to be made: needs to check if slot is empty, before inserting dragon
         this.board[row][col].push(dragon);
     }
 
@@ -55,6 +55,7 @@ class Board {
         this.board[newRow][newColumn].push(dragon); //inserts dragon
         console.log('Inserted in row: ' + newRow + ' and column: ' + newColumn);
     }
+
 }
 
 

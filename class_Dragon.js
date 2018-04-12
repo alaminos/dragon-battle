@@ -65,16 +65,28 @@ class Dragon {
 
     onBoard(board)
     {
-        //board[this.locus.x][this.locus.y] = this.name; 
-        /*problem is, old position is still drawn on printed board.
-        this function should not change the board directly, it should just signal Board what is its new position,
-        and the board, will update the map after every new position input.
-        */
-
         board.aDragonHasMoved(this, old_x, old_y, this.locus.x, this.locus.y);
-        /*this function signals to the board the new position of the dragon
-        a method of the board should make sure that previous position is erased
-        Could also be in charge of signaling back to the dragon that the board limit has been reached.*/
+    }
+
+    checkForEnemies(board)
+    {
+        /* if (true) attack()
+        check all adjacent squares in horizontal and vertical plane
+        that is, check all permutations:
+        being x equal to this.locus.x
+        and bien y -1, or +1
+        or being y equal to this.locus.y
+        and x -1 or +1
+        */
+       //how should I express this more clearly?
+       /*Maybe:
+       check first for objects adjacent in the horizontal plane.
+       if board[this.locus.x][this.locus.y+1].length > 0
+       || board[this.locus.x][this.locus.y-1].length > 0
+       || board[this.locus.x+1][this.locus.y].length > 0
+       || board[this.locus.x-1][this.locusy].length > 0
+       */
+
     }
 }
 
