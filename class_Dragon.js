@@ -72,35 +72,32 @@ class Dragon {
     check(board,x,y) //to be tested
     {
         if (board.board[x][y].length > 0) {
-            this.attack(board.board[x][y]);
+            console.log('An enemy has been found in row ' + x + ' and column ' + y + '.');
+            //this.attack(board.board[x][y]);
         }
     }
 
-    checkForEnemies(board)
+    checkForEnemies(board) //to be tested
     {
-        let sameRow = this.locus.x;
-        let sameCol = this.locus.y;
-
-        if (board.board[sameRow][sameCol+1].length > 0) {
-            //pick a fight
-        } else if (board.board[sameRow][sameCol-1].length > 0){
-            //pick a fight
-        } else if (board.board[sameRow+1][sameCol]) {
-            //pick a fight
-        } else if (board.board[sameRow-1][sameCol]) {
-            //pick a fight
-        }
-
-        /*breaking down the problem:
-        a function attack(enemy) for attacking another dragon, done
-        a function check(x,y) that checks if there is a dragon in coordenates x y;
-        a function that calls the check(x,y) passing the different argument permutations:
+        /*
+        a func that calls the check(x,y) func passing the different argument permutations:
             sameX, sameY+1
             sameX, sameY-1
             sameX+1, sameY
             sameX-1, sameY
-         
-        /* if (true) attack()
+        */
+        for (var x = this.locus.x-1; x => this.locus.x+1; x++) {
+            if (x === this.locus.x) {
+                for (var y = this.locus.y-1; y => this.locus.y+1; y++) {
+                    if (y != this.locus.y) {
+                        check(board,x,y);
+                    }
+                }
+            }
+            check(board,x,this.locus.y);
+        }
+
+         /*
         check all adjacent squares in horizontal and vertical plane
         that is, check all permutations:
         being x equal to this.locus.x
