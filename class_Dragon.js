@@ -70,6 +70,28 @@ class Dragon {
 
     checkForEnemies(board)
     {
+        let sameRow = this.locus.x;
+        let sameCol = this.locus.y;
+
+        if (board.board[sameRow][sameCol+1].length > 0) {
+            //pick a fight
+        } else if (board.board[sameRow][sameCol-1].length > 0){
+            //pick a fight
+        } else if (board.board[sameRow+1][sameCol]) {
+            //pick a fight
+        } else if (board.board[sameRow-1][sameCol]) {
+            //pick a fight
+        }
+
+        /*breaking down the problem:
+        a function attack(enemy) for attacking another dragon;
+        a function check(x,y) that checks if there is a dragon in x, y coordenates
+        a function that calls the check(x,y) passing the different argument permutations:
+            sameX, sameY+1
+            sameX, sameY-1
+            sameX+1, sameY
+            sameX-1, sameY
+         
         /* if (true) attack()
         check all adjacent squares in horizontal and vertical plane
         that is, check all permutations:
@@ -79,13 +101,7 @@ class Dragon {
         and x -1 or +1
         */
        //how should I express this more clearly?
-       /*Maybe:
-       check first for objects adjacent in the horizontal plane.
-       if board[this.locus.x][this.locus.y+1].length > 0
-       || board[this.locus.x][this.locus.y-1].length > 0
-       || board[this.locus.x+1][this.locus.y].length > 0
-       || board[this.locus.x-1][this.locusy].length > 0
-       */
+       
 
     }
 }
