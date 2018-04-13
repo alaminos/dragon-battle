@@ -18,9 +18,9 @@ class Dragon {
         console.log(`Hi my name is ${this.name}`);
     }
 
-    move(board)
+    move(board) //I think this arg is not necessary
     {     
-        //current coordenates are saved before changing them
+        //current coordenates are stored before changing them, as we will need to pass these values
         let oldX = this.locus.x;
         let oldY = this.locus.y;
 
@@ -28,7 +28,7 @@ class Dragon {
         this.locus.x += this.randomValue(this.locus.x);
         this.locus.y += this.randomValue(this.locus.y);
         console.log('Moving ' + this.name + ' to row : ' + this.locus.x + ' and to column : ' + this.locus.y);
-        //pass new coordenates to board method
+        
         board.aDragonHasMoved(this, oldX, oldY, this.locus.x, this.locus.y);
     }
 
@@ -60,12 +60,20 @@ class Dragon {
     receiveDamage()
     {
         //define damage received based on strength of attack received and defense this.defense
-        this.stamina =- x;
+        //this.stamina =- x;
+        console.log('Ouch, attack received');
     }
 
-    onBoard(board)
-    {
+    onBoard(board) //I think this func is no longer needed and can be deleted.
+    {   
         board.aDragonHasMoved(this, old_x, old_y, this.locus.x, this.locus.y);
+    }
+
+    check(board,x,y) //to be tested
+    {
+        if (board.board[x][y].length > 0) {
+            this.attack(board.board[x][y]);
+        }
     }
 
     checkForEnemies(board)
@@ -84,8 +92,8 @@ class Dragon {
         }
 
         /*breaking down the problem:
-        a function attack(enemy) for attacking another dragon;
-        a function check(x,y) that checks if there is a dragon in x, y coordenates
+        a function attack(enemy) for attacking another dragon, done
+        a function check(x,y) that checks if there is a dragon in coordenates x y;
         a function that calls the check(x,y) passing the different argument permutations:
             sameX, sameY+1
             sameX, sameY-1
