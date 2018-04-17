@@ -50,7 +50,7 @@ each square can accommodate one and only one dragon
 when dragons are introduced into the board, location is either picked randomly
 or chosen.
 board.addNewDragon will check if square is occupied
-
+In the console, represent each dragon w a differnt symbol so as to distinguish em
 
 /*
 steps must take into account the extension of the board, that is the dragon cannot end up outside of the board
