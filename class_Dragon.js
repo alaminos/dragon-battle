@@ -99,13 +99,13 @@ class Dragon {
 
          /*
         check all adjacent squares in horizontal and vertical plane
-        that is, check all permutations:
+        So:
         being x equal to this.locus.x
-        and bien y -1, or +1
-        or being y equal to this.locus.y
-        and x -1 or +1
+        and y equal to -1, or +1
+        OR being y equal to this.locus.y
+        and x equal to -1 or +1.
+        Check all permutations.
         */
-       //how should I express this more clearly?
        
 
     }
