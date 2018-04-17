@@ -64,11 +64,6 @@ class Dragon {
         console.log('Ouch, attack received');
     }
 
-    onBoard(board) //I think this func is no longer needed and can be deleted.
-    {   
-        board.aDragonHasMoved(this, old_x, old_y, this.locus.x, this.locus.y);
-    }
-
     check(board,x,y) //to be tested
     {
         if (board.board[x][y].length > 0) {
