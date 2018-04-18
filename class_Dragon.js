@@ -67,13 +67,13 @@ class Dragon {
 
     check(board,x,y) //to be tested
     {
-        if (board.board[x][y] == undefined) {
+        if (board.board[x][y] == undefined) { //error I get: cannot read property '4' of undefined (4 or some other number that seems to correspond w/ value of x¿)
             console.log('Undefined in x : ' + x + ' and y : ' + y + '.')
         } else if (board.board[x][y].length > 0) { //error cannot read property 'length' of undefined
             console.log('An enemy has been found in row ' + x + ' and column ' + y + '.');
             //this.attack(board.board[x][y]);
         } else {
-            console.log('No enemies found');
+            console.log('No enemies found in row ' + x + ' and column ' + y + '.');
         }
     }
 
@@ -85,16 +85,17 @@ class Dragon {
             sameX, sameY-1
             sameX+1, sameY
             sameX-1, sameY
+            Values must be 0 or higher
         */
-        for (var x = this.locus.x-1; x <= this.locus.x + 1 && x > 0; x++) {
+        for (var x = this.locus.x-1; x <= this.locus.x + 1 && x > -1; x++) {
             if (x === this.locus.x) {
-                for (var y = this.locus.y-1; y <= this.locus.y + 1 && y > 0; y++) {
+                for (var y = this.locus.y-1; y <= this.locus.y + 1 && y > -1; y++) {
                     if (y != this.locus.y) {
-                        this.check(board,x,y);
+                        this.check(board, x, y);
                     }
                 }
             }
-            this.check(board,x,this.locus.y);
+            this.check(board, x, this.locus.y);
         }
 
          /*
