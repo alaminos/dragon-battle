@@ -67,7 +67,9 @@ class Dragon {
 
     check(board,x,y) //to be tested
     {
-        if (board.board[x][y].length > 0) { //error cannot read property 'length' of undefined
+        if (board.board[x][y] == undefined) {
+            console.log('Undefined in x : ' + x + ' and y : ' + y + '.')
+        } else if (board.board[x][y].length > 0) { //error cannot read property 'length' of undefined
             console.log('An enemy has been found in row ' + x + ' and column ' + y + '.');
             //this.attack(board.board[x][y]);
         } else {
@@ -75,7 +77,7 @@ class Dragon {
         }
     }
 
-    checkForEnemies(board) //to be tested
+    checkForEnemies(board)
     {
         /*
         a func that calls the check(x,y) func passing the different argument permutations:
@@ -84,9 +86,9 @@ class Dragon {
             sameX+1, sameY
             sameX-1, sameY
         */
-        for (var x = this.locus.x-1; x <= this.locus.x + 1; x++) {
+        for (var x = this.locus.x-1; x <= this.locus.x + 1 && x > 0; x++) {
             if (x === this.locus.x) {
-                for (var y = this.locus.y-1; y <= this.locus.y + 1; y++) {
+                for (var y = this.locus.y-1; y <= this.locus.y + 1 && y > 0; y++) {
                     if (y != this.locus.y) {
                         this.check(board,x,y);
                     }
