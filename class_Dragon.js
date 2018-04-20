@@ -45,7 +45,7 @@ class Dragon {
 
         if (locusValue === 0) { //if coordenate is 0 (meaning it is located in board-array at index 0) then it cannot go any lower
             min = 0; //so in this case, minimum value for the randomly generated change is 0
-        } else (locusValue === this.boardSize-1) {   
+        } else if (locusValue === this.boardSize-1) {   
             //note that if boardSize is 4, indexes of array go from 0 to 3, so higher index is boardSize-1.
             max = 0;
         }
