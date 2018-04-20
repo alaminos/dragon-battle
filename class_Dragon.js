@@ -18,7 +18,7 @@ class Dragon {
         console.log(`Hi my name is ${this.name}`);
     }
 
-    move(board) //I think this arg is not necessary
+    move(board)
     {     
         //current coordenates are stored before changing them, as we will need to pass these values
         let oldX = this.locus.x;
@@ -27,7 +27,7 @@ class Dragon {
         //coordenates are changed
         this.locus.x += this.randomValue(this.locus.x);
         this.locus.y += this.randomValue(this.locus.y);
-        console.log('Moving ' + this.name + ' to row : ' + this.locus.x + ' and to column : ' + this.locus.y);
+        console.log(`Moving ${this.name} to row : ${this.locus.x} and to column : ${this.locus.y}`);
         
         board.aDragonHasMoved(this, oldX, oldY, this.locus.x, this.locus.y);
         this.checkForEnemies(board);
@@ -35,20 +35,23 @@ class Dragon {
 
     randomValue(locusValue)
     {
-        //Possible values generated: -1, 0, and +1
+        /*Possible movements: -1, 0, and +1
+        -1 means: going down a column, or going left in a row
+        +1 means: column upwards, or going right in a row*/
         //Before choosing random value, we will establish min and max possible values
 
-        let min = -1; //means: going down a column, or going left in a row
-        let max = 1; //means: column upwards, or going right in a row
+        let min = -1;
+        let max = 1;
 
-        if (locusValue === 0) { //if coordenate is 0 (means it is located in board-array index at index 0) it cannot go any lower
+        if (locusValue === 0) { //if coordenate is 0 (meaning it is located in board-array at index 0) then it cannot go any lower
             min = 0; //so in this case, minimum value for the randomly generated change is 0
-        } else if (locusValue === this.boardSize-1) {   
+        } else (locusValue === this.boardSize-1) {   
             //note that if boardSize is 4, indexes of array go from 0 to 3, so higher index is boardSize-1.
             max = 0;
-        } else { console.log('No min or max was changed.');}
+        }
         
         return Math.floor(Math.random() * (max - min + 1)) + min;
+        //returns a random n between min and max
     }
 
     attack(enemy)
@@ -65,7 +68,7 @@ class Dragon {
         console.log('Ouch, attack received');
     }
 
-    check(board,x,y) //to be tested
+    check(board,x,y) //debugging
     {
         if (board.board[x][y] == undefined) { //error I get: cannot read property '4' of undefined (4 or some other number that seems to correspond w/ value of x¿)
             console.log('Undefined in x : ' + x + ' and y : ' + y + '.')
@@ -80,6 +83,15 @@ class Dragon {
     checkForEnemies(board)
     {
         /*
+        Must check all adjacent squares in horizontal and vertical plane
+        So:
+        being x equal to this.locus.x
+        and y equal to -1, or +1
+        OR being y equal to this.locus.y
+        and x equal to -1 or +1.
+        Check all permutations.
+        */
+        /*
         a func that calls the check(x,y) func passing the different argument permutations:
             sameX, sameY+1
             sameX, sameY-1
@@ -90,25 +102,13 @@ class Dragon {
         for (var x = this.locus.x-1; x <= this.locus.x + 1 && x > -1; x++) {
             if (x === this.locus.x) {
                 for (var y = this.locus.y-1; y <= this.locus.y + 1 && y > -1; y++) {
-                    if (y != this.locus.y) {
+                    if (y !== this.locus.y) { //this condition avoids the dragon from checking the square where he is sitting himself
                         this.check(board, x, y);
                     }
                 }
             }
             this.check(board, x, this.locus.y);
         }
-
-         /*
-        check all adjacent squares in horizontal and vertical plane
-        So:
-        being x equal to this.locus.x
-        and y equal to -1, or +1
-        OR being y equal to this.locus.y
-        and x equal to -1 or +1.
-        Check all permutations.
-        */
-       
-
     }
 }
 
