@@ -55,15 +55,15 @@ class Dragon {
     }
 
     attack(enemy)
-    {
-        //define strength of attack based on power and chance
-        console.log(`${this.name} attacks ${enemy.name}!!`);
-        enemy.receiveDamage();
+    {   //strenght of attack is partly defined randomly, partly defined by power attribute
+        let strength = this.power * (Math.random() * (0.9 - 0.1) + 0.1);
+        console.log(`${this.name} casts an attack of value ${strenght} against ${enemy.name}!!`);
+        enemy.receiveDamage(strength);
     }
 
     receiveDamage()
     {
-        //define damage received based on strength of attack received and defense this.defense
+        let damage; //define damage received based on strength of attack received and defense this.defense
         //this.stamina =- x;
         console.log('Ouch, attack received');
     }
