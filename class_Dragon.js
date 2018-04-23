@@ -2,7 +2,7 @@ class Dragon {
     
     constructor(name, power, stamina, defense, boardSize) 
     {
-        this.power = power; //number between 1 and 12?
+        this.power = power; //number between 1 and 12? 16?
         this.stamina = stamina;
         this.defense = defense; //8 is max val
         this.name = name;
@@ -20,7 +20,7 @@ class Dragon {
 
     move(board)
     {     
-        //current coordenates are stored before changing them, as we will need to pass these values
+        //current coordenates are stored before changing them, as we will need to pass them to another func
         let oldX = this.locus.x;
         let oldY = this.locus.y;
 
@@ -29,6 +29,7 @@ class Dragon {
         this.locus.y += this.randomValue(this.locus.y);
         console.log(`Moving ${this.name} to row : ${this.locus.x} and to column : ${this.locus.y}`);
         
+        //to improve: before moving it should check that the square is not already occupied by an enemy
         board.aDragonHasMoved(this, oldX, oldY, this.locus.x, this.locus.y);
         this.checkForEnemies(board);
     }
