@@ -64,7 +64,7 @@ class Dragon {
 
     receiveDamage(strength)
     {
-        let damage; //define damage received based on strength of attack received and defense this.defense
+        let damage ; //define damage received based on strength of attack received and defense this.defense
         //this.stamina =- x;
         console.log('Ouch, attack received');
     }
