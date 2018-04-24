@@ -2,9 +2,9 @@ class Dragon {
     
     constructor(name, power, stamina, defense, boardSize) 
     {
-        this.power = power; //number between 1 and 12? 16?
-        this.stamina = stamina;
-        this.defense = defense; //8 is max val
+        this.power = power; //number between 1 and 12?
+        this.stamina = stamina; //5...16
+        this.defense = defense; //1...12
         this.name = name;
         this.boardSize = boardSize;
         this.locus = {
@@ -56,7 +56,7 @@ class Dragon {
     }
 
     attack(enemy)
-    {   //strenght of attack is partly defined randomly, partly defined by power attribute
+    {   //strength of attack is partly defined randomly, partly defined by power attribute
         let strength = this.power * (Math.random() * (0.9 - 0.1) + 0.1);
         console.log(`${this.name} casts an attack of value ${strength} against ${enemy.name}!!`);
         enemy.receiveDamage(strength);

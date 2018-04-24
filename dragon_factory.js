@@ -6,16 +6,17 @@ dragonFactory = {
 
     setStamina : function(power) {
         //the more power the less stamina
-        this.stamina = 16 - power; //power val btw 1...16 ?
+        this.stamina = 17 - power; //power val btw 1...12
+        //stamina value: 5...16
     },
 
     setDefense : function(power) {
         //big difference between power & stamina will result in low defense, and vice versa
         let difference = Math.abs(power - this.stamina); 
         /*difference between power and stamina, absolute value (no negative numbers)
-        The val of difference: max 15, min 0*/
+        The val of difference: max 15, min 4*/
         this.defense = 16 - difference;
-        //defense val btw 1...16
+        //defense val btw 1...12
     },
 
     construct : function(name, power, boardSize) {
