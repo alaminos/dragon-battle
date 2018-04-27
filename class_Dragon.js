@@ -71,11 +71,9 @@ class Dragon {
         console.log(`Ouch, ${this.name} has received an attack of strength ${strength} suffering a damage of ${damage}. Stamina left is ${this.stamina}.`);
     }
 
-    check(board,x,y) //debugging
+    check(board,x,y)
     {
-        if (board.board[x][y] == undefined) { //error I get: cannot read property '4' of undefined (4 or some other number that seems to correspond w/ value of x¿)
-            console.log('Undefined in x : ' + x + ' and y : ' + y + '.')
-        } else if (board.board[x][y].length > 0) { //error cannot read property 'length' of undefined
+        if (board.board[x][y].length > 0) { //error cannot read property 'length' of undefined
             console.log('An enemy has been found in row ' + x + ' and column ' + y + '.');
             //this.attack(board.board[x][y]);
         } else {
