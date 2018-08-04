@@ -101,15 +101,15 @@ class Dragon {
             Values must be 0 or higher
         */
         for (var x = this.locus.x - 1; x <= this.locus.x + 1 && x > -1 && x < board.size; x++) {
-            if (x === this.locus.x) {
+            if (x === this.locus.x) { //if same row
                 for (var y = this.locus.y-1; y <= this.locus.y + 1 && y > -1 && y < board.size; y++) {
-                    if (y !== this.locus.y) {
+                    if (y !== this.locus.y) { //same row but different col
                         this.check(board, x, y);
                     }
                 }
-            } else {
-                let y = this.locus.y;
-                this.check(board, x, y);
+            } else { //different row
+                let y = this.locus.y; //same col
+                this.check(board, x, y); 
             }
             
         }
