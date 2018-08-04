@@ -1,9 +1,9 @@
 class Board {
     constructor(size)
     {
-        this.size = size; //this property may be useful for keeping dragon moves within limits
-
+        this.size = size;
         this.board = [];
+
         for (var x = 0; x < size; x++) {
             this.board.push([]);
             for (var y = 0; y < size; y++) {
@@ -14,21 +14,23 @@ class Board {
 
     drawBoard()
     {
-        //let objectsFound = [];
+        /*this function draws the board after every dragon move, 
+        and shows the position of the dragons on the board
+        These are represented with an x,
+        while empty slots are represented with a dot */
         for (var x = 0; x < this.board.length; x++) {
             let line = '';
             for (var y = 0; y < this.board[x].length; y++) {
                 if (this.board[x][y].length === 0) {
-                    line += ' . ';
+                    //if there is nothing in those coordenates, print a dot
+                    line += ' . '; 
                 }
                 else {
                     line += ' x ';
-                    //objectsFound.push(this.board[x][y]);
                 }
             }
-            console.log(line);
+            console.log(line); //the row is printed, and the loop goes on
         }
-        //console.log(objectsFound);
     }
 
     addNewDragon(dragon)
@@ -41,9 +43,10 @@ class Board {
 
     randomPlace()
     {
+        /*chooses random coordenates where to place dragon.
+        this func is used for deciding initial position of dragon*/
         return Math.floor(Math.random() * this.size);
     }
-
 
     aDragonHasMoved(dragon, oldRow, oldColumn, newRow, newColumn)
     {
