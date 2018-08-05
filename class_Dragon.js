@@ -8,8 +8,8 @@ class Dragon {
         this.name = name;
         this.boardSize = boardSize;
         this.locus = {
-            x : undefined, //type: number. The max value of these coordenates will depend on the size of the board
-            y : undefined
+            y : undefined, //type: number. The max value of these coordenates will depend on the size of the board
+            x : undefined
         }
     }
 
@@ -27,10 +27,10 @@ class Dragon {
         //coordenates are changed
         this.locus.x += this.randomValue(this.locus.x);
         this.locus.y += this.randomValue(this.locus.y);
-        console.log(`Moving ${this.name} to row : ${this.locus.x} and to column : ${this.locus.y}`);
+        console.log(`Moving ${this.name} to row : ${this.locus.y} and to column : ${this.locus.x}`);
         
         //to improve: before moving it should check that the square is not already occupied by an enemy
-        board.aDragonHasMoved(this, oldX, oldY, this.locus.x, this.locus.y);
+        board.aDragonHasMoved(this, oldY, oldX, this.locus.y, this.locus.x);
         this.checkForEnemies(board);
     }
 
@@ -47,7 +47,8 @@ class Dragon {
         if (locusValue === 0) { //if coordenate is 0 (meaning it is located in board-array at index 0) then it cannot go any lower
             min = 0; //so in this case, minimum value for the randomly generated change is 0
         } else if (locusValue === this.boardSize-1) {   
-            //note that if boardSize is 4, indexes of array go from 0 to 3, so the highest index is boardSize-1.
+            //Why -1? : 
+            //Note that if boardSize is 4, indexes of array go from 0 to 3, so the highest index is boardSize-1.
             max = 0;
         }
         
@@ -57,8 +58,8 @@ class Dragon {
 
     attack(enemy)
     {   //strength of attack is partly defined randomly, partly defined by power attribute
-        let strengthOfAttack = this.power * (Math.random() * (0.9 - 0.1) + 0.1); //value of strength 
-        console.log(`${this.name} casts an attack of value ${strengthOfAttack} against ${enemy.name}!!`);
+        let strengthOfAttack = this.power * (Math.random() * (0.9 - 0.1) + 0.1);
+        console.log(`${this.name} casts an attack of strength ${strengthOfAttack} against ${enemy.name}!!`);
         enemy.receiveDamage(strengthOfAttack);
     }
 
@@ -68,15 +69,15 @@ class Dragon {
         let damage = strengthOfAttack - shield;  //1...12
         if (damage < 1) damage = 1;
         this.stamina -= damage;
-        console.log(`Ouch, ${this.name} has received an attack of strength ${strengthOfAttack} suffering a damage of ${damage}. Stamina left is ${this.stamina}.`);
+        console.log(`Ouch, ${this.name} has received an attack, suffering a damage of ${damage}. Stamina left is ${this.stamina}.`);
     }
 
-    check(board,x,y)
+    check(board,y,x)
     {
-        if (board.board[x][y].length > 0) { //error cannot read property 'length' of undefined
-            console.log('An enemy has been found in row ' + x + ' and column ' + y + '.');
-            console.log(`${this.name} says: I have found an enemy in row ${x} and column ${y}.`);
-            this.attack(board.board[x][y][0]);
+        if (board.board[y][x].length > 0) { //error cannot read property 'length' of undefined
+            console.log('An enemy has been found in row ' + y + ' and column ' + x + '.');
+            console.log(`${this.name} says: I have found an enemy in row ${y} and column ${x}.`);
+            this.attack(board.board[y][x][0]);
         } /*else {
             console.log('No enemies found in row ' + x + ' and column ' + y + '.');
         }*/
@@ -101,22 +102,19 @@ class Dragon {
             sameX-1, sameY
             Values must be 0 or higher
         */
-        for (var x = this.locus.x - 1; x <= this.locus.x + 1 && x > -1 && x < board.size; x++) {
-            if (x === this.locus.x) { //if same row
-                for (var y = this.locus.y-1; y <= this.locus.y + 1 && y > -1 && y < board.size; y++) {
-                    if (y !== this.locus.y) { //same row but different col
-                        this.check(board, x, y);
+        for (var y = this.locus.y - 1; y <= this.locus.y + 1 && x > -1 && y < board.size; y++) {
+            if (y === this.locus.y) { //if same row
+                for (var x = this.locus.x-1; x <= this.locus.x + 1 && x > -1 && x < board.size; x++) {
+                    if (x !== this.locus.x) { //same row but different col
+                        this.check(board, y, x);
                     }
                 }
             } else { //different row
-                let y = this.locus.y; //same col
-                this.check(board, x, y); 
+                let x = this.locus.x; //same col
+                this.check(board, y, x); 
             }
-            
         }
     }
 }
-
-
 
 module.exports = Dragon;

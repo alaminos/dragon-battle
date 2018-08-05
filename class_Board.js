@@ -4,10 +4,10 @@ class Board {
         this.size = size;
         this.board = [];
 
-        for (var x = 0; x < size; x++) {
+        for (var y = 0; y < size; y++) {
             this.board.push([]);
-            for (var y = 0; y < size; y++) {
-                this.board[x].push([]);
+            for (var x = 0; x < size; x++) {
+                this.board[y].push([]);
             }
         }
     }
@@ -18,10 +18,10 @@ class Board {
         and shows the position of the dragons on the board
         These are represented with an x,
         while empty slots are represented with a dot */
-        for (var x = 0; x < this.board.length; x++) {
+        for (var y = 0; y < this.board.length; y++) {
             let line = '';
-            for (var y = 0; y < this.board[x].length; y++) {
-                if (this.board[x][y].length === 0) {
+            for (var x = 0; x < this.board[y].length; x++) {
+                if (this.board[y][x].length === 0) {
                     //if there is nothing in those coordenates, print a dot
                     line += ' . '; 
                 }
@@ -35,8 +35,8 @@ class Board {
 
     addNewDragon(dragon)
     {   
-        let row = dragon.locus.x = this.randomPlace();
-        let col = dragon.locus.y = this.randomPlace();
+        let row = dragon.locus.y = this.randomPlace();
+        let col = dragon.locus.x = this.randomPlace();
         this.board[row][col].push(dragon);
     }
 
