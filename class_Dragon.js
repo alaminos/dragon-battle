@@ -68,17 +68,18 @@ class Dragon {
         let damage = strengthOfAttack - shield;  //1...12
         if (damage < 1) damage = 1;
         this.stamina -= damage;
-        console.log(`Ouch, ${this.name} has received an attack of strength ${strength} suffering a damage of ${damage}. Stamina left is ${this.stamina}.`);
+        console.log(`Ouch, ${this.name} has received an attack of strength ${strengthOfAttack} suffering a damage of ${damage}. Stamina left is ${this.stamina}.`);
     }
 
     check(board,x,y)
     {
         if (board.board[x][y].length > 0) { //error cannot read property 'length' of undefined
             console.log('An enemy has been found in row ' + x + ' and column ' + y + '.');
-            //this.attack(board.board[x][y]);
-        } else {
+            console.log(`${this.name} says: I have found an enemy in row ${x} and column ${y}.`);
+            this.attack(board.board[x][y][0]);
+        } /*else {
             console.log('No enemies found in row ' + x + ' and column ' + y + '.');
-        }
+        }*/
     }
 
     checkForEnemies(board)
