@@ -102,15 +102,15 @@ class Dragon {
             sameX-1, sameY
             Values must be 0 or higher
         */
-        for (var y = this.locus.y - 1; y <= this.locus.y + 1 && x > -1 && y < board.size; y++) {
+        for (var y = this.locus.y - 1; y <= this.locus.y + 1 && y > -1 && y < board.size; y++) {
             if (y === this.locus.y) { //if same row
                 for (var x = this.locus.x-1; x <= this.locus.x + 1 && x > -1 && x < board.size; x++) {
-                    if (x !== this.locus.x) { //same row but different col
+                    if (x !== this.locus.x) { //check different col
                         this.check(board, y, x);
                     }
                 }
-            } else { //different row
-                let x = this.locus.x; //same col
+            } else { //if different row
+                let x = this.locus.x; //check same col
                 this.check(board, y, x); 
             }
         }
